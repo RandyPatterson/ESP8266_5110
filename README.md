@@ -14,12 +14,11 @@ This library is used to connect the Nokia 5110 Graphic Display to the ESP8266 Wi
 
 
 ###Pinout
-```
-Nokia 5150		ESP-12
----------------------------
-PIN_SCE		    5  //D1
-PIN_RESET       4  //D2
-PIN_DC    		0  //D3
-PIN_SDIN  		2  //D4
-PIN_SCLK  		14 //D5
-```
+
+|Nokia 5150   | ESP-12 Pin | ESP-12 Name |
+|---|---|---|
+| PIN_SCE | 5  | D1 |
+| PIN_RESET | 4 | D2 |
+| PIN_DC | 0 | D3 |
+| PIN_SDIN | 2 | D4 |
+| PIN_SCLK | 14 | D5 |

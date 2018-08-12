@@ -231,7 +231,7 @@ void ESP8266_Nokia5110::printDynamic(String val)
 	}else if(_alignment==CENTER){
 		int totalLength=0;
 		for (int i = 0; i < str_len-1; i++) {
-			charInfo=arialNarrow_7ptDescriptors[characters[i] - 0x20];
+			charInfo=_currentFont.descriptor[characters[i] - 0x20];
 			totalLength+=charInfo.length+1;
 		}
 		if(totalLength<LCD_COL){
@@ -240,7 +240,7 @@ void ESP8266_Nokia5110::printDynamic(String val)
 	}else if (_alignment==RIGHT){
 		int totalLength=0;
 		for (int i = 0; i < str_len-1; i++) {
-			charInfo=arialNarrow_7ptDescriptors[characters[i] - 0x20];
+			charInfo=_currentFont.descriptor[characters[i] - 0x20];
 			totalLength+=charInfo.length+1;
 		}
 		if(totalLength<LCD_COL){

@@ -4,6 +4,9 @@
 
 
 #include <Arduino.h>
+#include <FontStructs.h>
+#include "ArialNarrow7pt.h"
+#include "ComicSans7pt.h"
 
 //The DC pin tells the LCD if we are sending a command or data
 #define LCD_COMMAND 0
@@ -11,6 +14,7 @@
 
 #define LCD_COL   84
 #define LCD_ROW   48
+
 
 
 class ESP8266_Nokia5110 {
@@ -25,12 +29,17 @@ public:
     void setContrast(uint8_t val);
     //Write a single character to the screen at the current cursor location
     void write(char character);
+    void writeDynamic(char character);
     //displays text to the screen at the current cursor location
     void print(String val);
+    //displays text to the screen at the current cursor location
+    void printDynamic(String val);
     //Positions the cursor in the upper-left of the LCD. That is, use that location in outputting subsequent text to the display. To also clear the display, use the clear() function instead.
     void home();
     //Clear screen and sets cursor position to home
     void clear();
+    void setAlignment(FONT_ALIGNMENT alignment=LEFT);
+    void setFont(FONT font);
 private:
   //Send data or a command over the SPI bus to LCD
   void send(byte dc, byte data);
@@ -39,7 +48,10 @@ private:
   uint8_t _dc;
   uint8_t _rst;
   uint8_t _cs;
-
+  FONT_ALIGNMENT _alignment=LEFT;
+  uint8_t _currentRow;
+  uint8_t _currentCol;
+  FONT_INFO _currentFont;
 };
 
 #endif
